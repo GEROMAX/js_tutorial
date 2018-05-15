@@ -1,0 +1,1 @@
+console.log("hello GEROMAX's learning world!", "what happen using multi parameter?");
