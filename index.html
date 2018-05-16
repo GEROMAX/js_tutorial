@@ -4,12 +4,9 @@
 <head>
   <title>Learn Enough JavaScript</title>
   <meta charset="utf-8">
+  <script src="./day.js"></script>
   <script>
-    const dayOfWeek = ["日","月","火","水","木","金","土"];
-    
-    let now = new Date();
-    let dayName = dayOfWeek[now.getDay()];
-    alert(`hellow, world! hapy ${dayName}.`);
+    alert(`hellow, world! hapy ${getDayOfWeekName(new Date())}.`);
   </script>
 </head>
 
