@@ -15,7 +15,7 @@ But bears it out even to the edge of doom.
 
 let uniques = new Map();
 
-sonnet.match(/[(\w|\w\'\w+)]+/g).forEach(function(value) {
+sonnet.match(/[(\w|\w\'\w+)]+/g).forEach(value => {
   uniques[value] ? (uniques[value] += 1) : (uniques[value] = 1);
 });
 
