@@ -1,7 +1,21 @@
-const reverseString = str => {
-  return Array.from(str)
+// Adds `reverse` to all strings.
+String.prototype.reverse = function() {
+  return Array.from(this)
     .reverse()
     .join("");
+};
+// const reverseString = str => {
+//   return Array.from(str)
+//     .reverse()
+//     .join("");
+// };
+
+// practice
+String.prototype.isBlank = function() {
+  return !!this.match(/^(\s)*$/);
+};
+Array.prototype.last = function() {
+  return this[this.length - 1];
 };
 
 // Defines a Phrase object.
@@ -17,7 +31,7 @@ function Phrase(content) {
     return this.lowerStr(this.content);
   };
   this.palindrome = function palindrome() {
-    return this.lowerText() === reverseString(this.lowerText());
+    return this.lowerText() === this.lowerText().reverse();
   };
   this.louder = function louder() {
     return this.content.toUpperCase();
