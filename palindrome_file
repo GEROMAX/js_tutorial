@@ -1,0 +1,14 @@
+#!C:\Program Files\nodejs\node.exe
+
+let fs = require("fs");
+let Phrase = require("js_tutorial_palindrome");
+
+let txt = fs.readFileSync("doc\\phrases.txt", "utf-8");
+let phrase = new Phrase();
+txt.split("\n").map(line => {
+  phrase.content = line;
+  if (phrase.palindrome()) {
+    console.log("palindrome detected:", line);
+    fs.appendFile("doc\\filtered.txt", line + "\n", "utf-8", err => { console.log(err); });
+  }
+});
