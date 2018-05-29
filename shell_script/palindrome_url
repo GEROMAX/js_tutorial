@@ -1,7 +1,14 @@
-var request = require("request");
-request("http://www.google.com", function(error, response, body) {
-  console.log("error:", error); // Print the error if one occurred
-  // Print the response status code if a response was received
-  console.log("statusCode:", response && response.statusCode);
-  console.log("body:", body); // Print the HTML for the Google homepage.
+#!C:\Program Files\nodejs\node.exe
+
+let request = require("request");
+let Phrase = require("js_tutorial_palindrome");
+let url = "https://cdn.learnenough.com/phrases.txt";
+
+request(url, function(error, response, body) {
+  let ph = new Phrase();
+  body.split("\n").filter(line => {
+    ph.content = line;
+    if (!ph.palindrome()) return;
+    console.log("palindrome detected:", ph.content);
+  });
 });
