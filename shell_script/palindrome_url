@@ -5,10 +5,9 @@ let Phrase = require("js_tutorial_palindrome");
 let url = "https://cdn.learnenough.com/phrases.txt";
 
 request(url, function(error, response, body) {
-  let ph = new Phrase();
-  body.split("\n").filter(line => {
-    ph.content = line;
-    if (!ph.palindrome()) return;
-    console.log("palindrome detected:", ph.content);
+  body.split("\n").filter(line => { 
+    return new Phrase(line).palindrome();
+  }).map(find => { 
+    console.log("palindrome detected:", find); 
   });
 });
