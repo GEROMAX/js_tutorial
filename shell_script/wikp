@@ -1,0 +1,38 @@
+#!C:\Program Files\nodejs\node.exe
+
+let request = require("request");
+
+if (process.argv.length < 3) {
+  console.log("Error no param.");
+  process.exit(1);
+}
+let url = process.argv[2];
+
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+request(url, function(error, response, body) {
+  // Simulate a Document Object Model.
+  let { document } = new JSDOM(body).window;
+
+  // Grab all the paragraphs and references.
+  let paragraphs = document.querySelectorAll("p");
+  let references = document.querySelectorAll(".reference");
+
+  // Remove any references.
+  references.forEach(function(reference) {
+    reference.remove();
+  });
+
+  // Print out all the paragraphs.
+  let fs = require("fs");
+  let fileName = process.argv[2].replace(/(:\/\/|\/)/g, "_") + ".txt";
+  fs.writeFileSync(
+    fileName,
+    Array.from(paragraphs).reduce((values, item) => {
+      values += item.textContent + "\n";
+      return values;
+    }, ""),
+    "utf-8"
+  );
+});
