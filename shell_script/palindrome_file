@@ -9,6 +9,8 @@ txt.split("\n").map(line => {
   phrase.content = line;
   if (phrase.palindrome()) {
     console.log("palindrome detected:", line);
-    fs.appendFile("..\\doc\\filtered.txt", line + "\n", "utf-8", err => { console.log(err); });
+    fs.appendFile("..\\doc\\filtered.txt", line + "\n", "utf-8", err => {
+      console.log(err);
+    });
   }
 });
